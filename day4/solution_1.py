@@ -30,13 +30,19 @@ for current_draw in draw_order:
         board_columns = [column[i:i + 5] for i in range(0, len(column), 5)]
         for i, col in enumerate(board_columns):
             if sum(col) == -5:
-                winning_board_no = divmod(i, 5)[0]
+                winning_board_no = i
     
     if winning_board_no:
         start = winning_board_no * 5
         winning_board = boards[start:start + 5]
-        #print(winning_board)
-        #print(winning_board_no)
-        #TODO: Check winning_board_no
-        #TODO: Sum of winning_board * current_draw
+        remaining_numbers = []
+        for row in winning_board:
+            for num in row:
+                if num >0:
+                    remaining_numbers.append(num)
+
+        print(f"remaining: {sum(remaining_numbers)}")
+        print(f"current draw: {current_draw}")
+        print(f"solution: {sum(remaining_numbers) * current_draw}")
+        break
 
